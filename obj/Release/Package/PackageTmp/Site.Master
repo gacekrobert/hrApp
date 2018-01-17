@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication4.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Holiday App.
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" Orientation="Horizontal" SkipLinkText='Skip Navigation Links' IncludeStyleBlock="False">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/all/myaccount.aspx" Text="My Account"/>
+                        <asp:MenuItem NavigateUrl="~/all/myholidays.aspx" Text="My Holidays"/>
+                        <asp:MenuItem NavigateUrl="~/menager/menager_holidays.aspx" Text="My Team Holidays"/>
+                        <asp:MenuItem NavigateUrl="~/hr/manageholidays.aspx" Text="HR Manage Holidays"/>
+                        <asp:MenuItem NavigateUrl="~/hr/manageusers.aspx?users=emploee" Text="Manage Users"/>
+                        <asp:MenuItem NavigateUrl="~/hr/menageteams.aspx" Text="Manage Teams"/>
+                        <asp:MenuItem NavigateUrl="~/hr/hrsettings.aspx" Text="Ustawienia HR"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear"></div>
+        <p style="margin-bottom:20px;"></p>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
